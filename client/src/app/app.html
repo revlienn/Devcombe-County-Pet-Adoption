@@ -1,5 +1,8 @@
-<h1>{{title}}</h1>
+<ul>
+  @for(user of users();track user.id){
+    <li>{{user.id}}-{{user.displayName}}</li>
+  }
+</ul>
 
-@for(member of members();track member.id){
-  <li>{{member.id}}. {{member.displayName}} - {{member.email}}</li>
-}
+  <h4 class="text-3xl text-red-500 font-bold">{{ title() }}</h4>
+<button class="btn btn-primary">Primary</button>
