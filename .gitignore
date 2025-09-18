@@ -92,3 +92,7 @@ Thumbs.db
 # Secrets
 secrets.json
 appsettings.Development.json
+
+# SQLite db
+*.db-shm
+*.db-wal
