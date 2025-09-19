@@ -1,8 +1,14 @@
-<ul>
-  @for(user of users();track user.id){
-    <li>{{user.id}}-{{user.displayName}}</li>
-  }
-</ul>
+<app-navbar/>
+
+<div class="mt-24 lg:p-10 p-5 bg-base-100 lg:w-1/2 mx-auto">
+  
+  <ul>
+    @for(user of users();track user.id){
+      <li>{{user.id}}-{{user.displayName}}</li>
+    }
+  </ul>
 
   <h4 class="text-3xl text-red-500 font-bold">{{ title() }}</h4>
-<button class="btn btn-primary">Primary</button>
+  <button class="btn btn-primary">Primary</button>
+  <router-outlet />
+</div>
