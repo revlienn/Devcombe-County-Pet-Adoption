@@ -7,7 +7,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PetsController(AppDbContext context) : ControllerBase
+    public class PetsController(AppDbContext context) : BaseApiController
     {
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<Pet>>> GetPets()
