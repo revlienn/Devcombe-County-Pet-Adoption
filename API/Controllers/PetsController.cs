@@ -1,4 +1,5 @@
 using API.Data;
+using API.DTOs;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,12 +17,28 @@ namespace API.Controllers
             return pets;
         }
 
-        [HttpGet("{id}")] 
+        [HttpGet("{id}")]
 
         public async Task<ActionResult<Pet>> GetPet(string id)
         {
             var pet = await context.Pets.FindAsync(id);
             if (pet == null) return NotFound();
+            return pet;
+        }
+        [HttpPost("add")]
+        public async Task<ActionResult<Pet>> AddPet(PetDto petDto)
+        {
+            var pet = new Pet
+            {
+                Name = petDto.Name,
+                Species = petDto.Species,
+                Status = petDto.Status,
+                Description = petDto.Description
+            };
+
+            context.Pets.Add(pet);
+            await context.SaveChangesAsync();
+
             return pet;
         }
     }

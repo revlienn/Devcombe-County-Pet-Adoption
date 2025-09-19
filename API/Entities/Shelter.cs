@@ -17,7 +17,7 @@ namespace API.Entities
         public required string Postcode { get; set; }
         public required string City { get; set; }
         public string? Description { get; set; }
-        public required DateTime CreatedAt{ get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt{ get; set; } = DateTime.UtcNow;
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }

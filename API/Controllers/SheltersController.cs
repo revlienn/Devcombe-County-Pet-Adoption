@@ -1,4 +1,5 @@
 using API.Data;
+using API.DTOs;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,12 +17,30 @@ namespace API.Controllers
             return shelters;
         }
 
-        [HttpGet("{id}")] 
+        [HttpGet("{id}")]
 
         public async Task<ActionResult<Shelter>> Getshelter(string id)
         {
             var shelter = await context.Shelters.FindAsync(id);
             if (shelter == null) return NotFound();
+            return shelter;
+        }
+
+        [HttpPost("add")]
+        public async Task<ActionResult<Shelter>> AddShelter(ShelterDto shelterDto)
+        {
+            var shelter = new Shelter
+            {
+                Name = shelterDto.Name,
+                Email = shelterDto.Email,
+                AddressLine1 = shelterDto.AddressLine1,
+                Postcode = shelterDto.Postcode,
+                City = shelterDto.City
+            };
+
+            context.Shelters.Add(shelter);
+            await context.SaveChangesAsync();
+
             return shelter;
         }
     }
