@@ -1,6 +1,7 @@
 using API.Data;
 using API.DTOs;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +26,7 @@ namespace API.Controllers
             if (pet == null) return NotFound();
             return pet;
         }
+        [Authorize]
         [HttpPost("add")]
         public async Task<ActionResult<Pet>> AddPet(PetDto petDto)
         {
@@ -33,7 +35,8 @@ namespace API.Controllers
                 Name = petDto.Name,
                 Species = petDto.Species,
                 Status = petDto.Status,
-                Description = petDto.Description
+                Description = petDto.Description,
+                Color=petDto.Color,
             };
 
             context.Pets.Add(pet);

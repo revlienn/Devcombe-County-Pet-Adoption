@@ -1,6 +1,7 @@
 using API.Data;
 using API.DTOs;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,6 +27,7 @@ namespace API.Controllers
             return shelter;
         }
 
+        [Authorize]
         [HttpPost("add")]
         public async Task<ActionResult<Shelter>> AddShelter(ShelterDto shelterDto)
         {
