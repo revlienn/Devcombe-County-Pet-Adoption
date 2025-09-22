@@ -14,8 +14,8 @@ export class Home {
   @Input({required:true}) membersFromApp:User[]=[];
   @Input({required:true}) sheltersFromApp:any=[];
 
-  showRegister(){
-    this.registerMode.set(true);
+  showRegister(value:boolean){
+    this.registerMode.set(value);
   }
 
 }

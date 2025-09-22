@@ -6,13 +6,13 @@
             <h1 class="font-bold text-2xl">Adopt your furry friend</h1>
             <p class="">All you need to do is sign up</p>
             <div class="flex items-center gap-2 mt-2">
-               <button class="btn btn-lg btn-primary" (click)="showRegister()">Register</button>
+               <button class="btn btn-lg btn-primary" (click)="showRegister(true)">Register</button>
                <button class="btn btn-lg btn-primary btn-outline">Learn more</button>
             </div>
 
          </div>
       </div>
    }@else{
-      <div class="text-xl text-center mx-auto w-full"><app-register [membersFromHome]="membersFromApp" [sheltersFromHome]="sheltersFromApp"/></div>
+      <div class="text-xl text-center mx-auto w-full"><app-register [membersFromHome]="membersFromApp" [sheltersFromHome]="sheltersFromApp" (cancelRegister)="showRegister($event)"/></div>
    }
 </div>
