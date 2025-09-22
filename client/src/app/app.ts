@@ -4,6 +4,7 @@ import { Navbar } from '../navbar/navbar';
 import { RouterOutlet } from '@angular/router';
 import { RouterUpgradeInitializer } from '@angular/router/upgrade';
 import { AccountService } from '../services/account-service';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +19,10 @@ export class App {
   protected users=signal<any>([]);
   protected readonly title = signal('client');
 
-  ngOnInit():void{
+
+  async ngOnInit(){
     this.setCurrentUser();
+    this.users.set(await this.getMembers());
   }
 
   setCurrentUser(){
@@ -28,5 +31,14 @@ export class App {
 
     const user=JSON.parse(userString);
     this.accountService.currentUser.set(user);
+  }
+
+  async getMembers(){
+    try {
+      return lastValueFrom(this.http.get('https://localhost:5001/api/members'));
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   }
 }

@@ -8,7 +8,6 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class MembersController(AppDbContext context) : BaseApiController
     {
         [HttpGet]
@@ -18,6 +17,7 @@ namespace API.Controllers
             return members;
         }
 
+        [Authorize]
         [HttpGet("{id}")]
 
         public async Task<ActionResult<AppUser>> GetMember(string id)
