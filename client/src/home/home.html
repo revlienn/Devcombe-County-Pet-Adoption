@@ -13,6 +13,6 @@
          </div>
       </div>
    }@else{
-      <div class="text-xl text-center mx-auto w-full"><app-register [membersFromHome]="membersFromApp" [sheltersFromHome]="sheltersFromApp" (cancelRegister)="showRegister($event)"/></div>
+      <div class="text-xl text-center mx-auto w-full"><app-register (cancelRegister)="showRegister($event)"/></div>
    }
 </div>
