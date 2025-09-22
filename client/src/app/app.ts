@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { Navbar } from '../navbar/navbar';
 import { RouterOutlet } from '@angular/router';
-import { RouterUpgradeInitializer } from '@angular/router/upgrade';
 import { AccountService } from '../services/account-service';
 import { lastValueFrom } from 'rxjs';
+import { Home } from '../home/home';
 
 @Component({
   selector: 'app-root',
-  imports: [Navbar,RouterOutlet],
+  imports: [Navbar,RouterOutlet,Home],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

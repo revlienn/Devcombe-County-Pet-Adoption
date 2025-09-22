@@ -1,0 +1,18 @@
+<div class="hero bg-base-100">
+   @if(!registerMode()){
+      <div class="hero-content text-center">
+         <div class="flex flex-col items-center">
+            <img src="/home-hero.jpg"/>
+            <h1 class="font-bold text-2xl">Adopt your furry friend</h1>
+            <p class="">All you need to do is sign up</p>
+            <div class="flex items-center gap-2 mt-2">
+               <button class="btn btn-lg btn-primary" (click)="showRegister()">Register</button>
+               <button class="btn btn-lg btn-primary btn-outline">Learn more</button>
+            </div>
+
+         </div>
+      </div>
+   }@else{
+      <div class="text-xl text-center mx-auto">Registration form</div>
+   }
+</div>
