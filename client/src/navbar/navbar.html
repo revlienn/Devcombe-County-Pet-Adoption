@@ -1,7 +1,7 @@
 <header class="w-full fixed top-0 z-50 bg-gradient-to-r from-primary to-black ">
-  <div class="navbar bg-gradient-to-r from-primary-to-black text-white w-full mx-auto items-center flex-nowrap 2xl:w-3/4 border-4 border-red-600">
+  <div class="navbar bg-gradient-to-r from-primary-to-black text-white w-full mx-auto items-center flex-nowrap 2xl:w-3/4">
     <!-- left side -->
-    <div class="navbar-start flex-1 min-w-2/3 w-full border-2 border-green-400">
+    <div class="navbar-start flex-1 min-w-2/3 w-full">
       <div class="dropdown">
         <div tabindex="0" role="button" class="btn btn-ghost md:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -20,7 +20,7 @@
               <li><a>Red Harbor</a></li>
             </ul>
           </li>
-          @if(!loggedIn()){
+          @if(!accountService.currentUser(); as user){
               <li class=""><a>Register</a></li>
               <li class=""><a>Login</a></li>
             }@else{
@@ -50,7 +50,7 @@
               <li><a class="whitespace-nowrap">Red Harbor</a></li>
             </ul>
           </li>
-            @if(loggedIn()){
+            @if(accountService.currentUser(); as user){
               <li><a>My Profile-all</a></li>
               <li><a>Applications-ModsAdmin</a></li>
               <li><a>Pets-Admin</a></li>
@@ -66,10 +66,10 @@
 
     <!-- Right Side -->
     <div class="navbar-end gap-3 text-black hidden lg:flex">
-      @if(loggedIn()){
-      <div class="dropdown dropdown-hover dropdown-end hidden lg:flex lg:w-fit pe-3 lg:border-2 lg:border-amber-300">
+      @if(accountService.currentUser(); as user){
+      <div class="dropdown dropdown-hover dropdown-end hidden lg:flex lg:w-fit pe-3 ">
         <div tabindex="0" role="button" class="flex items-center text-white text-xl gap-3 cursor-pointer">
-          <span class="text-white hidden lg:flex">Jim</span>
+          <span class="text-white hidden lg:flex">{{user.displayName}}</span>
           <img src="/user.png" class="w-8 h-8 rounded-3xl" alt="member avatar">
         </div>
         <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm text-black">
@@ -81,7 +81,7 @@
         </ul>
       </div>
       }@else{
-         <div class="hidden lg:flex lg:w-fit w-0 lg:border-2 lg:border-amber-300">
+         <div class="hidden lg:flex lg:w-fit w-0 ">
             <form action="" class="flex items-center gap-3 text-black" #loginForm="ngForm" (ngSubmit)="login()">
             <input type="text" class="input" placeholder="Email" [(ngModel)]="creds.email" name="email">
             <input type="password" class="input" placeholder="Password" [(ngModel)]="creds.password" name="password">

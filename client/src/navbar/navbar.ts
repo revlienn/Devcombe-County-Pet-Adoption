@@ -9,15 +9,12 @@ import { AccountService } from '../services/account-service';
   styleUrl: './navbar.css'
 })
 export class Navbar {
-  private accountService=inject(AccountService);
+  protected accountService=inject(AccountService);
   protected creds:any={};
-  protected loggedIn=signal(false);
 
   login(){
     this.accountService.login(this.creds).subscribe({
       next:(res)=>{
-        console.log(res);
-        this.loggedIn.set(true);
         this.creds={};
       },
       error:(err)=>alert(`ERROR: ${err.message}`)
@@ -25,6 +22,6 @@ export class Navbar {
   }
 
   logout(){
-    this.loggedIn.set(false);
+    this.accountService.logout();
   }
 }

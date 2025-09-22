@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { Navbar } from '../navbar/navbar';
 import { RouterOutlet } from '@angular/router';
+import { RouterUpgradeInitializer } from '@angular/router/upgrade';
+import { AccountService } from '../services/account-service';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +12,21 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('client');
   private http=inject(HttpClient);
+  private accountService=inject(AccountService);
+
   protected users=signal<any>([]);
+  protected readonly title = signal('client');
 
   ngOnInit():void{
-    this.http.get('https://localhost:5001/api/members').subscribe({
-      next: (response) => this.users.set(response),
-      error: (error) => console.log(error),
-      complete: () => console.log('HTTP Request Complete'),
-    });
+    this.setCurrentUser();
+  }
+
+  setCurrentUser(){
+    const userString=localStorage.getItem('user');
+    if(!userString) return;
+
+    const user=JSON.parse(userString);
+    this.accountService.currentUser.set(user);
   }
 }
