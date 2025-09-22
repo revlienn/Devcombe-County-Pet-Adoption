@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { Register } from '../register/register';
+import { User } from '../types/user';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,8 @@ import { Register } from '../register/register';
 export class Home {
 
   protected registerMode=signal(false);
+  @Input({required:true}) membersFromApp:User[]=[];
+  @Input({required:true}) sheltersFromApp:any=[];
 
   showRegister(){
     this.registerMode.set(true);

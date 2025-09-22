@@ -2,6 +2,6 @@
 
 <div class="mt-24 lg:p-10 p-5 bg-base-100 lg:w-1/2 mx-auto">
   
-<app-home></app-home>
+<app-home [membersFromApp]="users()" [sheltersFromApp]="shelters()"></app-home>
   <router-outlet />
 </div>
