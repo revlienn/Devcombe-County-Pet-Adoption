@@ -2,7 +2,7 @@ import { HttpInterceptorFn } from '@angular/common/http';
 import { catchError } from 'rxjs';
 import { ToastService } from '../../services/toast-service';
 import { inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const toastService=inject(ToastService);
@@ -31,6 +31,8 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
           toastService.error('Not Found');
           break;
         case 500:
+          const navigationExtras:NavigationExtras={state:{error:err.error}};
+          router.navigateByUrl('/server-error', navigationExtras);
           toastService.error('Server error');
           break;
         default:

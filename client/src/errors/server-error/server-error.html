@@ -1,0 +1,8 @@
+<div class="card bg-base-200 gap-4 mx-auto">
+   <h1 class="card-title text-2xl text-center">Server error</h1>
+   <p class="card-body text-xl text-center">{{error.message}}</p>
+   <button class="btn btn-parimary" (click)="detailsToggle()">Show details</button>
+   @if(showDetails){
+      <div>{{error.details}}</div>
+   }
+</div>

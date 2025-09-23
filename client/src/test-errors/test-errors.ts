@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-test-errors',
@@ -10,6 +11,8 @@ import { Component, inject, signal } from '@angular/core';
 export class TestErrors {
 
   private http=inject(HttpClient);
+  private router=inject(Router);
+
   baseUrl='https://localhost:5001/api/error/';
   validationErrors=signal<string[]>([]);
 
@@ -22,7 +25,7 @@ export class TestErrors {
 
   get404error(){
     return this.http.get(this.baseUrl+'not-found').subscribe({
-      next:res=>console.log(res),
+      next:res=>{console.log(res);this.router.navigateByUrl('/not-found')},
       error:err=>console.log(err)
     })
   }

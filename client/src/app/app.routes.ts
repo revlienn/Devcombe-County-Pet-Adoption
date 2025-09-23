@@ -13,6 +13,8 @@ import { Register } from '../register/register';
 import { VisitList } from '../pets/visit-list/visit-list';
 import { authGuard } from '../core/guards/auth-guard';
 import { TestErrors } from '../test-errors/test-errors';
+import { NotFound } from '../errors/not-found/not-found';
+import { ServerError } from '../errors/server-error/server-error';
 
 export const routes: Routes = [
    { path: '', component: Home },
@@ -34,5 +36,6 @@ export const routes: Routes = [
          { path: 'pets/visits', component: VisitList },]
    },
    { path: 'test-errors', component: TestErrors },
-   { path: '**', component: Home }
+   { path: 'server-error', component: ServerError },
+   { path: '**', component: NotFound }
 ];
