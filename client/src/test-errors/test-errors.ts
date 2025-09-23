@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 
 @Component({
   selector: 'app-test-errors',
@@ -11,9 +11,10 @@ export class TestErrors {
 
   private http=inject(HttpClient);
   baseUrl='https://localhost:5001/api/error/';
+  validationErrors=signal<string[]>([]);
 
   get401error(){
-    return this.http.get(this.baseUrl+'bad-request').subscribe({
+    return this.http.get(this.baseUrl+'auth').subscribe({
       next:res=>console.log(res),
       error:err=>console.log(err)
     })
@@ -29,7 +30,7 @@ export class TestErrors {
   get400error(){
     return this.http.get(this.baseUrl+'bad-request').subscribe({
       next:res=>console.log(res),
-      error:err=>console.log(err)
+      error:err=>{console.log(err)}
     })
   }
 
@@ -43,7 +44,7 @@ export class TestErrors {
   get400ValidationError(){
     return this.http.post('https://localhost:5001/api/account/register',{}).subscribe({
       next:res=>console.log(res),
-      error:err=>console.log(err)
+      error:err=>{console.log(err);this.validationErrors.set(err)}
     })
   }
 

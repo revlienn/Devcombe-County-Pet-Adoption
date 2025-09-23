@@ -8,25 +8,25 @@ namespace API.Controllers
 {
     public class ErrorController : BaseApiController
     {
-        [HttpGet("auth")]
+        [HttpGet("auth")]//401
         public IActionResult GetAuth()
         {
             return Unauthorized();
         }
 
-        [HttpGet("not-found")]
+        [HttpGet("not-found")]//404
         public IActionResult GetNotFound()
         {
             return NotFound();
         }
 
-        [HttpGet("bad-request")]
+        [HttpGet("bad-request")]//400
         public IActionResult GetBadRequest()
         {
-            return BadRequest("This is a bad request");
+            return BadRequest();
         }
 
-        [HttpGet("server-error")]
+        [HttpGet("server-error")]//500
         public IActionResult GetServerError()
         {
             throw new Exception("This is a server error");
