@@ -1,7 +1,9 @@
 <header class="w-full fixed top-0 z-50 bg-gradient-to-r from-primary to-black ">
-  <div class="navbar bg-gradient-to-r from-primary-to-black text-white w-full mx-auto items-center flex-nowrap 2xl:w-3/4">
+  <div
+     class="navbar bg-gradient-to-r from-primary-to-black text-white w-full mx-auto items-center flex-nowrap 2xl:w-3/4">
     <!-- left side -->
     <div class="navbar-start flex-1 min-w-2/3 w-full">
+      <!-- Mobile menu -->
       <div class="dropdown">
         <div tabindex="0" role="button" class="btn btn-ghost md:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -10,9 +12,9 @@
         </div>
         <ul tabindex="0"
            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-black">
-          <li><a>Pets</a></li>
+          <li><a routerLink="/pets" routerLinkActive="text-accent">Pets</a></li>
           <li>
-            <a>Shelters</a>
+            <a routerLink="/shelters" routerLinkActive="text-accent">Shelters</a>
             <ul class="p-2">
               <li><a>Oldtown</a></li>
               <li><a>Wolfton</a></li>
@@ -21,50 +23,53 @@
             </ul>
           </li>
           @if(!accountService.currentUser(); as user){
-              <li class=""><a>Register</a></li>
-              <li class=""><a>Login</a></li>
-            }@else{
-              
-              <li><a>My Profile-all</a></li>
-              <li><a>Applications-ModsAdmin</a></li>
-              <li><a>Pets-Admin</a></li>
-              <li><a>Users-Admin</a></li>
-              <li><a (click)="logout()">Logout-all</a></li>
-            }
+          <li class=""><a routerLink="/register" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact:true}">Register</a></li>
+          <li class=""><a>Login</a></li>
+          }@else{
+
+          <li><a routerLink="/members" routerLinkActive="text-accent">My Profile-all</a></li>
+          <li><a routerLink="/pets/visits" routerLinkActive="text-accent"
+               [routerLinkActiveOptions]="{exact:true}">Visit Applications-ModsAdmin</a></li>
+          <li><a routerLink="/members" routerLinkActive="text-accent">Users-Admin</a></li>
+          <li><a (click)="logout()">Logout-all</a></li>
+          }
         </ul>
       </div>
-      
-        <a href="" class="lg:text-xl text-base flex ps-0 md:ps-5 max-h-16 gap-3">
-          <h3 class="2xl:text-2xl text-md font-semibold ">Devcombe County-Pet Adoption</h3>
-        </a>
 
-        <ul class="menu menu-horizontal px-1 text-base md:flex hidden ps-5">
-          <li><a>Pets</a></li>
-          <li class="relative group">
-            <a class="cursor-pointer">Shelters</a>
-            <ul
-               class="absolute hidden group-hover:block bg-white text-black shadow-lg rounded-xs p-2 text-base top-full left-0 w-40">
-              <li><a class="whitespace-nowrap">Oldtown</a></li>
-              <li><a class="whitespace-nowrap">Wolfton</a></li>
-              <li><a class="whitespace-nowrap">Stonefield</a></li>
-              <li><a class="whitespace-nowrap">Red Harbor</a></li>
-            </ul>
-          </li>
-            @if(accountService.currentUser(); as user){
-              <li><a>My Profile-all</a></li>
-              <li><a>Applications-ModsAdmin</a></li>
-              <li><a>Pets-Admin</a></li>
-              <li><a>Users-Admin</a></li>
-              <li><a (click)="logout()">Logout-all</a></li>
-            }@else{
-              
-              <li class=""><a>Register</a></li>
-              <li class=""><a>Login</a></li>
-            }
-         </ul>
+      <!-- Desktop - left -->
+      <a routerLink="/" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact:true}"
+         class="lg:text-xl text-base flex ps-0 md:ps-5 max-h-16 gap-3">
+        <h3 class="2xl:text-2xl text-md font-semibold ">Devcombe County-Pet Adoption</h3>
+      </a>
+
+      <ul class="menu menu-horizontal px-1 text-base md:flex hidden ps-5">
+        <li><a routerLink="/pets" routerLinkActive="text-accent">Pets</a></li>
+        <li class="relative group">
+          <a class="cursor-pointer" routerLink="/shelters" routerLinkActive="text-accent">Shelters</a>
+          <ul
+             class="absolute hidden group-hover:block bg-white text-black shadow-lg rounded-xs p-2 text-base top-full left-0 w-40">
+            <li><a class="whitespace-nowrap">Oldtown</a></li>
+            <li><a class="whitespace-nowrap">Wolfton</a></li>
+            <li><a class="whitespace-nowrap">Stonefield</a></li>
+            <li><a class="whitespace-nowrap">Red Harbor</a></li>
+          </ul>
+        </li>
+        @if(accountService.currentUser(); as user){
+        <li><a routerLink="/members" routerLinkActive="text-accent">My Profile-all</a></li>
+        <li><a routerLink="/pets/visits" routerLinkActive="text-accent"
+             [routerLinkActiveOptions]="{exact:true}">Visit Applications-ModsAdmin</a></li>
+        <li><a routerLink="/members" routerLinkActive="text-accent">Users-Admin</a></li>
+        <li><a (click)="logout()">Logout-all</a></li>
+        }@else{
+
+        <li class=""><a routerLink="/register" routerLinkActive="text-accent"
+             [routerLinkActiveOptions]="{exact:true}">Register</a></li>
+        <li class=""><a>Login</a></li>
+        }
+      </ul>
     </div>
 
-    <!-- Right Side -->
+    <!-- Desktop - Right -->
     <div class="navbar-end gap-3 text-black hidden lg:flex">
       @if(accountService.currentUser(); as user){
       <div class="dropdown dropdown-hover dropdown-end hidden lg:flex lg:w-fit pe-3 ">
@@ -73,21 +78,21 @@
           <img src="/user.png" class="w-8 h-8 rounded-3xl" alt="member avatar">
         </div>
         <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm text-black">
-          <li><a>My Profile-all</a></li>
-          <li><a>Applications-ModsAdmin</a></li>
-          <li><a>Pets-Admin</a></li>
-          <li><a>Users-Admin</a></li>
+          <li><a routerLink="/members" routerLinkActive="text-accent">My Profile-all</a></li>
+          <li><a routerLink="/pets/visits" routerLinkActive="text-accent"
+               [routerLinkActiveOptions]="{exact:true}">Visit Applications-ModsAdmin</a></li>
+          <li><a routerLink="/members" routerLinkActive="text-accent">Users-Admin</a></li>
           <li><a (click)="logout()">Logout-all</a></li>
         </ul>
       </div>
       }@else{
-         <div class="hidden lg:flex lg:w-fit w-0 ">
-            <form action="" class="flex items-center gap-3 text-black" #loginForm="ngForm" (ngSubmit)="login()">
-            <input type="text" class="input" placeholder="Email" [(ngModel)]="creds.email" name="email">
-            <input type="password" class="input" placeholder="Password" [(ngModel)]="creds.password" name="password">
-            <button class="btn" type="submit">Login</button>
-            </form>
-         </div>
+      <div class="hidden lg:flex lg:w-fit w-0 ">
+        <form action="" class="flex items-center gap-3 text-black" #loginForm="ngForm" (ngSubmit)="login()">
+          <input type="text" class="input" placeholder="Email" [(ngModel)]="creds.email" name="email">
+          <input type="password" class="input" placeholder="Password" [(ngModel)]="creds.password" name="password">
+          <button class="btn" type="submit">Login</button>
+        </form>
+      </div>
       }
     </div>
   </div>
