@@ -17,6 +17,7 @@ namespace API.Middleware
                 logger.LogError(ex, "{message}", ex.Message);
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                // notice this only applies to error 500, above is only .InternalServerError
 
                 var response = env.IsDevelopment()
                 ? new ApiException(context.Response.StatusCode, ex.Message, ex.StackTrace)

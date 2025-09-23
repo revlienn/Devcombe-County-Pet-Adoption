@@ -12,6 +12,7 @@ import { ShelterDetails } from '../shelters/shelter-details/shelter-details';
 import { Register } from '../register/register';
 import { VisitList } from '../pets/visit-list/visit-list';
 import { authGuard } from '../core/guards/auth-guard';
+import { TestErrors } from '../test-errors/test-errors';
 
 export const routes: Routes = [
    { path: '', component: Home },
@@ -32,5 +33,6 @@ export const routes: Routes = [
          { path: 'members/:id', component: MemberDetails }, 
          { path: 'pets/visits', component: VisitList },]
    },
+   { path: 'test-errors', component: TestErrors },
    { path: '**', component: Home }
 ];
