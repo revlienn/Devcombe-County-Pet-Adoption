@@ -1,21 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { Navbar } from '../navbar/navbar';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { AccountService } from '../services/account-service';
 import { lastValueFrom } from 'rxjs';
-import { Home } from '../home/home';
 import { User } from '../types/user';
 
 @Component({
   selector: 'app-root',
-  imports: [Navbar,RouterOutlet,Home],
+  imports: [Navbar,RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   private http=inject(HttpClient);
   private accountService=inject(AccountService);
+  protected router=inject(Router);
 
   protected users=signal<User[]>([]);
   protected shelters=signal<any>([]);
