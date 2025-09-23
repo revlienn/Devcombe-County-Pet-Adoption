@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../services/account-service';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,12 +11,14 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class Navbar {
   protected accountService=inject(AccountService);
+  private router=inject(Router);
   protected creds:any={};
 
   login(){
     this.accountService.login(this.creds).subscribe({
       next:(res)=>{
         this.creds={};
+        this.router.navigateByUrl('/pets');
       },
       error:(err)=>alert(`ERROR: ${err.message}`)
     })
@@ -24,5 +26,6 @@ export class Navbar {
 
   logout(){
     this.accountService.logout();
+    this.router.navigateByUrl('/');
   }
 }
