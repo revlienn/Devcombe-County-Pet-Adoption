@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../services/account-service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { ToastService } from '../services/toast-service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,6 +12,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class Navbar {
   protected accountService=inject(AccountService);
+  private toastService=inject(ToastService);
   private router=inject(Router);
   protected creds:any={};
 
@@ -19,8 +21,9 @@ export class Navbar {
       next:(res)=>{
         this.creds={};
         this.router.navigateByUrl('/pets');
+        this.toastService.success("Logged in success");
       },
-      error:(err)=>alert(`ERROR: ${err.message}`)
+      error:(err)=>this.toastService.error(err.error)
     })
   }
 
