@@ -10,6 +10,7 @@ namespace API.Data
     public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {
         public DbSet<AppUser> Users { get; set; }
+        public DbSet<Member> Members{ get; set; }
         public DbSet<Pet> Pets { get; set; }
         public DbSet<Shelter> Shelters { get; set; }
         public DbSet<Photo> Photos { get; set; }
