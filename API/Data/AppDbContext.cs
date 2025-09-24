@@ -12,5 +12,7 @@ namespace API.Data
         public DbSet<AppUser> Users { get; set; }
         public DbSet<Pet> Pets { get; set; }
         public DbSet<Shelter> Shelters { get; set; }
+        public DbSet<Photo> Photos { get; set; }
+        public DbSet<VisitForm> VisitForms{ get; set; }
     }
 }

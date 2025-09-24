@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250924095138_PhotoVisitformEntitiesAdded")]
+    partial class PhotoVisitformEntitiesAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.9");
@@ -126,41 +129,6 @@ namespace API.Data.Migrations
                     b.ToTable("Pets");
                 });
 
-            modelBuilder.Entity("API.Entities.Photo", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsPrimary")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("PetId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PublicId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ShelterId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.HasIndex("PetId");
-
-                    b.HasIndex("ShelterId");
-
-                    b.ToTable("Photos");
-                });
-
             modelBuilder.Entity("API.Entities.Shelter", b =>
                 {
                     b.Property<string>("Id")
@@ -229,28 +197,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("VisitForms");
-                });
-
-            modelBuilder.Entity("API.Entities.Photo", b =>
-                {
-                    b.HasOne("API.Entities.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
-
-                    b.HasOne("API.Entities.Pet", "Pet")
-                        .WithMany()
-                        .HasForeignKey("PetId");
-
-                    b.HasOne("API.Entities.Shelter", "Shelter")
-                        .WithMany()
-                        .HasForeignKey("ShelterId");
-
-                    b.Navigation("AppUser");
-
-                    b.Navigation("Pet");
-
-                    b.Navigation("Shelter");
+                    b.ToTable("VisitForm");
                 });
 
             modelBuilder.Entity("API.Entities.VisitForm", b =>
