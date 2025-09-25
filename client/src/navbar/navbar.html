@@ -22,16 +22,20 @@
               <li><a>Red Harbor</a></li>
             </ul>
           </li>
-          @if(!accountService.currentUser(); as user){
-          <li class=""><a routerLink="/register" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact:true}">Register</a></li>
-          <li class=""><a>Login</a></li>
+          @if(accountService.currentUser(); as user){<li><a routerLink="/members/{{user.id}}"
+               routerLinkActive="text-accent">My Profile-all</a></li>
+          <li><a routerLink="/pets/visits" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact:true}">Visit
+              Applications-ModsAdmin</a></li>
+          <li><a routerLink="/members" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact:true}">Users-Admin</a></li>
+          <li><a (click)="logout()">Logout-all</a></li>
           }@else{
 
-          <li><a routerLink="/members" routerLinkActive="text-accent">My Profile-all</a></li>
-          <li><a routerLink="/pets/visits" routerLinkActive="text-accent"
-               [routerLinkActiveOptions]="{exact:true}">Visit Applications-ModsAdmin</a></li>
-          <li><a routerLink="/members" routerLinkActive="text-accent">Users-Admin</a></li>
-          <li><a (click)="logout()">Logout-all</a></li>
+
+
+
+          <li class=""><a routerLink="/register" routerLinkActive="text-accent"
+               [routerLinkActiveOptions]="{exact:true}">Register</a></li>
+          <li class=""><a>Login</a></li>
           }
         </ul>
       </div>
@@ -56,10 +60,10 @@
           </ul>
         </li>
         @if(accountService.currentUser(); as user){
-        <li><a routerLink="/members" routerLinkActive="text-accent">My Profile-all</a></li>
-        <li><a routerLink="/pets/visits" routerLinkActive="text-accent"
-             [routerLinkActiveOptions]="{exact:true}">Visit Applications-ModsAdmin</a></li>
-        <li><a routerLink="/members" routerLinkActive="text-accent">Users-Admin</a></li>
+        <li><a routerLink="/members/{{user.id}}" routerLinkActive="text-accent">My Profile-all</a></li>
+        <li><a routerLink="/pets/visits" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact:true}">Visit
+            Applications-ModsAdmin</a></li>
+        <li><a routerLink="/members" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact:true}">Users-Admin</a></li>
         <li><a (click)="logout()">Logout-all</a></li>
         }@else{
 
@@ -79,10 +83,10 @@
           <img [src]="user?.imageUrl||'user.png'" class="w-8 h-8 rounded-3xl" alt="member avatar">
         </div>
         <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm text-black">
-          <li><a routerLink="/members" routerLinkActive="text-accent">My Profile-all</a></li>
-          <li><a routerLink="/pets/visits" routerLinkActive="text-accent"
-               [routerLinkActiveOptions]="{exact:true}">Visit Applications-ModsAdmin</a></li>
-          <li><a routerLink="/members" routerLinkActive="text-accent">Users-Admin</a></li>
+          <li><a routerLink="/members/{{user.id}}" routerLinkActive="text-accent">My Profile-all</a></li>
+          <li><a routerLink="/pets/visits" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact:true}">Visit
+              Applications-ModsAdmin</a></li>
+          <li><a routerLink="/members" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact:true}">Users-Admin</a></li>
           <li><a (click)="logout()">Logout-all</a></li>
         </ul>
       </div>
