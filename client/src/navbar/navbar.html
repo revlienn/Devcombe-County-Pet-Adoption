@@ -76,7 +76,7 @@
       <div class="dropdown dropdown-hover dropdown-end hidden lg:flex lg:w-fit pe-3 ">
         <div tabindex="0" role="button" class="flex items-center text-white text-xl gap-3 cursor-pointer">
           <span class="text-white hidden lg:flex">{{user.displayName}}</span>
-          <img src="/user.png" class="w-8 h-8 rounded-3xl" alt="member avatar">
+          <img [src]="user?.imageUrl||'user.png'" class="w-8 h-8 rounded-3xl" alt="member avatar">
         </div>
         <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm text-black">
           <li><a routerLink="/members" routerLinkActive="text-accent">My Profile-all</a></li>
