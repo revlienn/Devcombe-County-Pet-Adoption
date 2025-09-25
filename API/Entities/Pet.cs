@@ -14,6 +14,7 @@ namespace API.Entities
         public string? Breed { get; set; }
         public string? Sex { get; set; }
         public string? Color { get; set; }
+        public string? ImageUrl{ get; set; }
         public int? WeightGr { get; set; }
         public string Description { get; set; } = "";
         public required string Status { get; set; }

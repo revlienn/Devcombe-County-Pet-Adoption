@@ -36,6 +36,7 @@ namespace API.Controllers
                 Status = petDto.Status,
                 Description = petDto.Description,
                 Color = petDto.Color,
+                ImageUrl=petDto.ImageUrl
             };
 
             context.Pets.Add(pet);

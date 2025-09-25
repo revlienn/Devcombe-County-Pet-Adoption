@@ -12,6 +12,7 @@ namespace API.DTOs
         public required string Status { get; set; }
         [Required]
         public required string Description { get; set; }
-        public string? Color{ get; set; }
+        public string? Color { get; set; }
+        public string? ImageUrl{ get; set; }
     }
 }

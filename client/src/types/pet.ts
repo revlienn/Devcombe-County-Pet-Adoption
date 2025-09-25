@@ -16,4 +16,5 @@ export type Pet = {
    createdAt: string
    updatedAt: string
    visitForm: any
+   imageUrl: string
 }
