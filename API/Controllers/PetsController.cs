@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+
+    [Authorize]
     public class PetsController(AppDbContext context) : BaseApiController
     {
         [HttpGet]
@@ -26,7 +26,6 @@ namespace API.Controllers
             if (pet == null) return NotFound();
             return pet;
         }
-        [Authorize]
         [HttpPost("add")]
         public async Task<ActionResult<Pet>> AddPet(PetDto petDto)
         {
@@ -36,7 +35,7 @@ namespace API.Controllers
                 Species = petDto.Species,
                 Status = petDto.Status,
                 Description = petDto.Description,
-                Color=petDto.Color,
+                Color = petDto.Color,
             };
 
             context.Pets.Add(pet);
