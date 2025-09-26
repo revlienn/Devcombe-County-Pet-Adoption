@@ -3,10 +3,11 @@ import { ShelterService } from '../../services/shelter-service';
 import { Observable } from 'rxjs';
 import { Shelter } from '../../types/shelter';
 import { AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-shelter-list',
-  imports: [AsyncPipe],
+  imports: [AsyncPipe,RouterLink],
   templateUrl: './shelter-list.html',
   styleUrl: './shelter-list.css'
 })

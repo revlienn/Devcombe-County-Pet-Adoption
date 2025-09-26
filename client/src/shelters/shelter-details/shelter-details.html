@@ -1,1 +1,3 @@
-<p>shelter-details works!</p>
+@if(shelter$|async; as shelter){
+   <p>{{shelter.name}}-{{shelter.email}}</p>
+}

@@ -1,5 +1,7 @@
 <div class="flex flex-col gap-3">
    @for(shelter of shelters$|async;track shelter.id){
-      <div>{{shelter.name}}</div>
+      <div [routerLink]="shelter.id" class="cursor-pointer">
+         <p>{{shelter.name}}</p>
+      </div>
    }
 </div>

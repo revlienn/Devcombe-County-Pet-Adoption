@@ -1,1 +1,3 @@
-<p>pet-details works!</p>
+@if(pet$|async; as pet){
+   <p>{{pet.name}}</p>
+}

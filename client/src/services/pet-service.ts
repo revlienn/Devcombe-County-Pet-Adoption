@@ -17,7 +17,7 @@ export class PetService {
   }
 
   getPet(id:string){
-    return this.http.get<Pet[]>(this.baseApi+'pet/'+id);
+    return this.http.get<Pet>(this.baseApi+'pets/'+id);
   }
   
 }

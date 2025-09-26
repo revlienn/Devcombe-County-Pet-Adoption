@@ -1,1 +1,3 @@
-<p>member-details works!</p>
+@if(member$|async;as member){
+   <p>{{member.displayName}}</p>
+}

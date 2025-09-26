@@ -18,6 +18,6 @@ export class ShelterService {
   }
 
   getShelter(id:string){
-    return this.http.get<Shelter[]>(this.baseUrl+'shelters/'+id)
+    return this.http.get<Shelter>(this.baseUrl+'shelters/'+id)
   }
 }
