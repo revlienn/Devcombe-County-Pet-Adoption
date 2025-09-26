@@ -3,7 +3,7 @@ import { PetService } from '../../services/pet-service';
 import { Pet } from '../../types/pet';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
-import { Card } from '../../card/card';
+import { Card } from '../../shared/card/card';
 
 @Component({
   selector: 'app-pet-list',

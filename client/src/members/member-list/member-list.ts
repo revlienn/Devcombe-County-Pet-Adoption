@@ -4,7 +4,7 @@ import { MemberService } from '../../services/member-service';
 import { Observable } from 'rxjs';
 import { Member } from '../../types/member';
 import { AsyncPipe } from '@angular/common';
-import { Card } from '../../card/card';
+import { Card } from '../../shared/card/card';
 
 @Component({
   selector: 'app-member-list',

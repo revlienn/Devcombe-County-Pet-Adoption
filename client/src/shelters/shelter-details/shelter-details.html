@@ -18,10 +18,16 @@
 
             <ul class="menu rounded-box w-full text-xl">
                <li>
-                  <a routerLink="" routerLinkActive="text-primary">Pets</a>
+                  <a routerLink="profile" routerLinkActive="text-primary">Profile</a>
                </li>
                <li>
-                  <a routerLink="" routerLinkActive="text-primary">Forms</a>
+                  <a routerLink="photos" routerLinkActive="text-primary">Photos</a>
+               </li>
+               <li>
+                  <a routerLink="/">Pets</a>
+               </li>
+               <li>
+                  <a routerLink="/">Forms</a>
                </li>
             </ul>
 
@@ -40,10 +46,10 @@
 
    <!-- right side -->
    <div class="card bg-base-100 p-3 w-3/4 border-2 border-blue-600">
-      <h3 class="card-title text-3xl">profile here</h3>
+      <h3 class="card-title text-3xl">{{title()}}</h3>
       <div class="divider"></div>
       <div>
-         router outlet here
+         <router-outlet></router-outlet>
       </div>
    </div>
 </div>

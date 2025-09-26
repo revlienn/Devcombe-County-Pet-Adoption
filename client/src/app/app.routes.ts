@@ -15,14 +15,24 @@ import { authGuard } from '../core/guards/auth-guard';
 import { TestErrors } from '../test-errors/test-errors';
 import { NotFound } from '../errors/not-found/not-found';
 import { ServerError } from '../errors/server-error/server-error';
+import { Profile } from '../shared/profile/profile';
+import { Photos } from '../shared/photos/photos';
 
 export const routes: Routes = [
    { path: '', component: Home },
    { path: 'pets', component: PetList },
-   { path: 'pets/:id', component: PetDetails },
+   { path: 'pets/:id', component: PetDetails, children:[
+      {path:'',redirectTo:'profile',pathMatch:'full'},
+      {path:'profile',component:Profile,title:'Profile'},
+      {path:'photos',component:Photos,title:'Photos'},
+   ] },
    { path: 'pets/visit/:id', component: VisitForm },
    { path: 'shelters', component: ShelterList },
-   { path: 'shelters/:id', component: ShelterDetails },
+   { path: 'shelters/:id', component: ShelterDetails,children:[
+      {path:'',redirectTo:'profile',pathMatch:'full'},
+      {path:'profile',component:Profile,title:'Profile'},
+      {path:'photos',component:Photos,title:'Photos'}
+   ] },
    { path: 'register', component: Register },
    {
       path: '',
@@ -32,7 +42,10 @@ export const routes: Routes = [
          { path: 'favourites', component: Favourites },
          { path: 'messages', component: Messages },
          { path: 'members', component: MemberList },
-         { path: 'members/:id', component: MemberDetails }, 
+         { path: 'members/:id', component: MemberDetails, children:[
+            {path:'',redirectTo:'profile',pathMatch:'full'},
+            {path:'profile',component:Profile,title:'Profile'}
+         ] }, 
          { path: 'pets/visits', component: VisitList },]
    },
    { path: 'test-errors', component: TestErrors },
