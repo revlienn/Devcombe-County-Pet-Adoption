@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { ShelterService } from '../../services/shelter-service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { Shelter } from '../../types/shelter';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-shelter-details',
-  imports: [AsyncPipe],
+  imports: [AsyncPipe,RouterLink,RouterLinkActive],
   templateUrl: './shelter-details.html',
   styleUrl: './shelter-details.css'
 })

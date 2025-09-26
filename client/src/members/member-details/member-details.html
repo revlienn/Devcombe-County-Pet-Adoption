@@ -1,3 +1,52 @@
 @if(member$|async;as member){
-   <p>{{member.displayName}}</p>
+   
+<div class="flex gap-5">
+   <!-- left side -->
+   <div class="card bg-base-100 flex flex-col gap-5 w-1/4 h-[80vh] border-2 border-blue-300">
+      <img src="{{member.imageUrl||'/user.png'}}" alt="image of member" class="rounded-xl object-cover">
+      <div class="card-body">
+         <div class="flex flex-col items-center">
+            <div class="flex text-2xl text-primary font-bold">
+               {{member.displayName}}
+            </div>
+            <div class="text-sm text-center">
+               <p>{{member.city}}, {{member.country}}</p>
+            </div>
+
+            <div class="divider divider-accent"></div>
+
+            <ul class="menu rounded-box w-full text-xl">
+               <li>
+                  <a routerLink="" routerLinkActive="text-primary">My Form</a>
+               </li>
+               <li>
+                  <a routerLink="" routerLinkActive="text-primary">Likes</a>
+               </li>
+            </ul>
+
+            <div class="card-action mb-3 w-full">
+               <button class="btn btn-neutral btn-outline whitespace-nowrap hover:underline">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="size-4">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                  </svg>
+                  Back</button>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+   <!-- right side -->
+   <div class="card bg-base-100 p-3 w-3/4 border-2 border-blue-600">
+      <h3 class="card-title text-3xl">profile here</h3>
+      <div class="divider"></div>
+      <div>
+         router outlet here
+      </div>
+   </div>
+</div>
+
+}@else{
+   No member found. <span routerLink="/">Go home</span>
 }

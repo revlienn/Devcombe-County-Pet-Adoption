@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { PetService } from '../../services/pet-service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Pet } from '../../types/pet';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-pet-details',
-  imports: [AsyncPipe],
+  imports: [AsyncPipe,RouterLink,RouterLinkActive],
   templateUrl: './pet-details.html',
   styleUrl: './pet-details.css'
 })
