@@ -13,15 +13,6 @@
         <ul tabindex="0"
            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-black">
           <li><a routerLink="/pets" routerLinkActive="text-accent">Pets</a></li>
-          <li>
-            <a routerLink="/shelters" routerLinkActive="text-accent">Shelters</a>
-            <ul class="p-2">
-              <li><a>Oldtown</a></li>
-              <li><a>Wolfton</a></li>
-              <li><a>Stonefield</a></li>
-              <li><a>Red Harbor</a></li>
-            </ul>
-          </li>
           @if(accountService.currentUser(); as user){<li><a routerLink="/members/{{user.id}}"
                routerLinkActive="text-accent">My Profile-all</a></li>
           <li><a routerLink="/pets/visits" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact:true}">Visit
@@ -49,16 +40,6 @@
       <ul class="menu menu-horizontal px-1 text-base md:flex hidden ps-5">
         <li><a routerLink="/test-errors" routerLinkActive="text-accent">Test Errors</a></li>
         <li><a routerLink="/pets" routerLinkActive="text-accent">Pets</a></li>
-        <li class="relative group">
-          <a class="cursor-pointer" routerLink="/shelters" routerLinkActive="text-accent">Shelters</a>
-          <ul
-             class="absolute hidden group-hover:block bg-white text-black shadow-lg rounded-xs p-2 text-base top-full left-0 w-40">
-            <li><a class="whitespace-nowrap">Oldtown</a></li>
-            <li><a class="whitespace-nowrap">Wolfton</a></li>
-            <li><a class="whitespace-nowrap">Stonefield</a></li>
-            <li><a class="whitespace-nowrap">Red Harbor</a></li>
-          </ul>
-        </li>
         @if(accountService.currentUser(); as user){
         <li><a routerLink="/members/{{user.id}}" routerLinkActive="text-accent">My Profile-all</a></li>
         <li><a routerLink="/pets/visits" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact:true}">Visit

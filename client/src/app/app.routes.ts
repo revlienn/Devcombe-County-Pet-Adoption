@@ -7,8 +7,6 @@ import { Messages } from '../messages/messages';
 import { VisitForm } from '../pets/visit-form/visit-form';
 import { MemberList } from '../members/member-list/member-list';
 import { MemberDetails } from '../members/member-details/member-details';
-import { ShelterList } from '../shelters/shelter-list/shelter-list';
-import { ShelterDetails } from '../shelters/shelter-details/shelter-details';
 import { Register } from '../register/register';
 import { VisitList } from '../pets/visit-list/visit-list';
 import { authGuard } from '../core/guards/auth-guard';
@@ -27,12 +25,6 @@ export const routes: Routes = [
       {path:'photos',component:Photos,title:'Photos'},
    ] },
    { path: 'pets/visit/:id', component: VisitForm },
-   { path: 'shelters', component: ShelterList },
-   { path: 'shelters/:id', component: ShelterDetails,children:[
-      {path:'',redirectTo:'profile',pathMatch:'full'},
-      {path:'profile',component:Profile,title:'Profile'},
-      {path:'photos',component:Photos,title:'Photos'}
-   ] },
    { path: 'register', component: Register },
    {
       path: '',
@@ -46,9 +38,9 @@ export const routes: Routes = [
             {path:'',redirectTo:'profile',pathMatch:'full'},
             {path:'profile',component:Profile,title:'Profile'}
          ] }, 
-         { path: 'pets/visits', component: VisitList },]
+         { path: 'pets/visits', component: VisitList },
+         { path: 'test-errors', component: TestErrors }]
    },
-   { path: 'test-errors', component: TestErrors },
    { path: 'server-error', component: ServerError },
    { path: '**', component: NotFound }
 ];
