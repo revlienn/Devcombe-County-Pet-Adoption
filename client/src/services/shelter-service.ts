@@ -14,18 +14,10 @@ export class ShelterService {
   private baseUrl=environment.apiUrl;
 
   getShelters(){
-    return this.http.get<Shelter[]>(this.baseUrl+'shelters',this.getHttpOptions())
+    return this.http.get<Shelter[]>(this.baseUrl+'shelters')
   }
 
   getShelter(id:string){
-    return this.http.get<Shelter[]>(this.baseUrl+'shelters/'+id, this.getHttpOptions())
-  }
-
-  getHttpOptions(){
-    return({
-      headers:new HttpHeaders({
-        Authorization:'Bearer '+ this.accountService.currentUser()?.token
-      })
-    })
+    return this.http.get<Shelter[]>(this.baseUrl+'shelters/'+id)
   }
 }

@@ -14,19 +14,11 @@ export class MemberService {
   private baseUrl=environment.apiUrl;
 
   getMembers(){
-    return this.http.get<Member[]>(this.baseUrl+'members',this.getHttpsOptions())
+    return this.http.get<Member[]>(this.baseUrl+'members')
   }
 
   getMember(id:string){
-    return this.http.get<Member>(this.baseUrl+'members/'+id,this.getHttpsOptions())
-  }
-
-  getHttpsOptions(){
-    return{
-      headers:new HttpHeaders({
-        Authorization:'Bearer '+ this.accountService.currentUser()?.token
-      })
-    }
+    return this.http.get<Member>(this.baseUrl+'members/'+id)
   }
 
 }

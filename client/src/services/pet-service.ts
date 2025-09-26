@@ -13,19 +13,11 @@ export class PetService {
   private baseApi=environment.apiUrl;
 
   getPets(){
-    return this.http.get<Pet[]>(this.baseApi+'pets',this.getHttpOptions());
+    return this.http.get<Pet[]>(this.baseApi+'pets');
   }
 
   getPet(id:string){
-    return this.http.get<Pet[]>(this.baseApi+'pet/'+id+this.getHttpOptions());
-  }
-
-  getHttpOptions(){
-    return({
-      headers:new HttpHeaders({
-        Authorization:'Bearer '+this.accountService.currentUser()?.token
-      })
-    })
+    return this.http.get<Pet[]>(this.baseApi+'pet/'+id);
   }
   
 }
