@@ -12,26 +12,21 @@ import { AsyncPipe } from '@angular/common';
   styleUrl: './pet-details.css'
 })
 export class PetDetails {
-  private petService=inject(PetService);
   private activeRoute=inject(ActivatedRoute);
   private router=inject(Router);
 
-  protected pet$? : Observable<Pet>;
+  protected pet=signal<Pet|undefined>(undefined);
   protected title=signal<string|undefined>('Profile');
 
   ngOnInit():void{
-    this.pet$ = this.loadPet();
+    this.activeRoute.data.subscribe({
+      next:data=>this.pet.set(data['pet'])
+    })
     this.title.set(this.activeRoute.firstChild?.snapshot?.title);
 
     this.router.events.pipe(filter(ev=>ev instanceof NavigationEnd)).subscribe({
       next:()=>
       this.title.set(this.activeRoute.firstChild?.snapshot?.title)
     })
-  }
-
-  loadPet(){
-    const id=this.activeRoute.snapshot.paramMap.get('id');
-    if(!id) return;
-    return this.petService.getPet(id);
   }
 }

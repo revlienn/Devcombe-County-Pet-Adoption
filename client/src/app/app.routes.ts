@@ -15,11 +15,13 @@ import { NotFound } from '../errors/not-found/not-found';
 import { ServerError } from '../errors/server-error/server-error';
 import { Profile } from '../shared/profile/profile';
 import { Photos } from '../shared/photos/photos';
+import { petResolver } from './pet-resolver';
+import { memberResolver } from './member-resolver';
 
 export const routes: Routes = [
    { path: '', component: Home },
    { path: 'pets', component: PetList },
-   { path: 'pets/:id', component: PetDetails, children:[
+   { path: 'pets/:id',resolve:{pet:petResolver},component: PetDetails, children:[
       {path:'',redirectTo:'profile',pathMatch:'full'},
       {path:'profile',component:Profile,title:'Profile'},
       {path:'photos',component:Photos,title:'Photos'},
@@ -34,7 +36,7 @@ export const routes: Routes = [
          { path: 'favourites', component: Favourites },
          { path: 'messages', component: Messages },
          { path: 'members', component: MemberList },
-         { path: 'members/:id', component: MemberDetails, children:[
+         { path: 'members/:id', resolve:{member:memberResolver},component: MemberDetails, children:[
             {path:'',redirectTo:'profile',pathMatch:'full'},
             {path:'profile',component:Profile,title:'Profile'}
          ] }, 

@@ -10,7 +10,8 @@
           "@schematics/angular:service": { "skipTests": true, "path": "src/services" }
           ,
           "@schematics/angular:guard": { "skipTests": true, "path": "src/core/guards" },
-          "@schematics/angular:interceptor": { "skipTests": true, "path": "src/core/interceptors" }
+          "@schematics/angular:interceptor": { "skipTests": true, "path": "src/core/interceptors" },
+          "@schematics/angular:resolver": { "skipTests": true}
         },
       "root": "",
       "sourceRoot": "src",

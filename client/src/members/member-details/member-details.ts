@@ -15,11 +15,13 @@ export class MemberDetails {
   private memberService=inject(MemberService);
   private activeRoute=inject(ActivatedRoute);
   private router=inject(Router);
-  protected member$?:Observable<Member>;
+  protected member=signal<Member|undefined>(undefined);
   protected title=signal<string|undefined>('Profile');
 
   constructor() {
-    this.member$=this.loadMember();
+    this.activeRoute.data.subscribe({
+      next:data=>this.member.set(data['member'])
+    })
     this.title.set(this.activeRoute.firstChild?.snapshot?.title);
     console.log(this.activeRoute);
 
@@ -27,11 +29,5 @@ export class MemberDetails {
       next:()=>
       this.title.set(this.activeRoute.firstChild?.snapshot?.title)
     })
-  }
-
-  loadMember(){
-    const id=this.activeRoute.snapshot.paramMap.get('id');
-    if(!id) return;
-    return this.memberService.getMember(id);
   }
 }
