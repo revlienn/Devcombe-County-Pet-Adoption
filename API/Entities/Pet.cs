@@ -8,7 +8,6 @@ namespace API.Entities
     public class Pet
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
-        public string? ShelterId { get; set; }
         public required string Name { get; set; }
         public required string Species { get; set; }
         public string? Breed { get; set; }
