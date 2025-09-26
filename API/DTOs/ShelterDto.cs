@@ -17,6 +17,7 @@ namespace API.DTOs
         [Required]
         public required string Postcode { get; set; }
         [Required]
-        public required string City{ get; set; }
+        public required string City { get; set; }
+        public string? ImageUrl{ get; set; }
     }
 }

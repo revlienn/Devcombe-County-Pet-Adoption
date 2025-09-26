@@ -36,7 +36,8 @@ namespace API.Controllers
                 Email = shelterDto.Email,
                 AddressLine1 = shelterDto.AddressLine1,
                 Postcode = shelterDto.Postcode,
-                City = shelterDto.City
+                City = shelterDto.City,
+                ImageUrl=shelterDto.ImageUrl
             };
 
             context.Shelters.Add(shelter);

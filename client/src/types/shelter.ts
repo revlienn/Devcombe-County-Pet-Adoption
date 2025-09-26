@@ -3,6 +3,7 @@ export type Shelter = {
    name: string
    email: string
    phone: any
+   imageUrl: string
    website: any
    addressLine1: string
    addressLine2: any
