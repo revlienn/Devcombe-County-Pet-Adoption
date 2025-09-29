@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace API.Entities
 {
@@ -14,7 +10,10 @@ namespace API.Entities
 
         //nav prop
         [JsonIgnore]
-        public Member Member { get; set; } = null!;
-        public string MemberId { get; set; } = null!;
+        public Member? Member { get; set; } = null!;
+        public string? MemberId { get; set; } = null!;
+        [JsonIgnore]
+        public Pet? Pet { get; set; } = null!;
+        public string? PetId { get; set; } = null!;
     }
 }

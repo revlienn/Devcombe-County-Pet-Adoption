@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace API.Entities
@@ -13,7 +14,7 @@ namespace API.Entities
         public string? Breed { get; set; }
         public string? Sex { get; set; }
         public string? Color { get; set; }
-        public string? ImageUrl{ get; set; }
+        public string? ImageUrl { get; set; }
         public int? WeightGr { get; set; }
         public string Description { get; set; } = "";
         public required string Status { get; set; }
@@ -26,6 +27,8 @@ namespace API.Entities
 
         //Nav props
         public VisitForm? VisitForm { get; set; } = null;
+        [JsonIgnore]
+        public List<Photo> Photos { get; set; } = [];
         
     }
 }
