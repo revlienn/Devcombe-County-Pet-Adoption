@@ -17,6 +17,7 @@ import { Profile } from '../shared/profile/profile';
 import { Photos } from '../shared/photos/photos';
 import { petResolver } from './pet-resolver';
 import { memberResolver } from './member-resolver';
+import { PetPhotos } from '../pets/pet-photos/pet-photos';
 
 export const routes: Routes = [
    { path: '', component: Home },
@@ -24,7 +25,7 @@ export const routes: Routes = [
    { path: 'pets/:id',resolve:{pet:petResolver},component: PetDetails, children:[
       {path:'',redirectTo:'profile',pathMatch:'full'},
       {path:'profile',component:Profile,title:'Profile'},
-      {path:'photos',component:Photos,title:'Photos'},
+      {path:'photos',component:PetPhotos,title:'Photos'},
    ] },
    { path: 'pets/visit/:id', component: VisitForm },
    { path: 'register', component: Register },
