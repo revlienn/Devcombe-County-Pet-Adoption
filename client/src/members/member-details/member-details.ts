@@ -13,7 +13,7 @@ import { AccountService } from '../../services/account-service';
   styleUrl: './member-details.css'
 })
 export class MemberDetails {
-  private memberService=inject(MemberService);
+  protected memberService=inject(MemberService);
   private accountService=inject(AccountService);
   private activeRoute=inject(ActivatedRoute);
   private router=inject(Router);
