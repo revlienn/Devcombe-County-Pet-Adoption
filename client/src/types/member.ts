@@ -15,5 +15,6 @@ export type Photo = {
     id: number
     publicId?: string
     url: string
-    memberId: string
+    memberId?: string
+    petId?:string
 }
