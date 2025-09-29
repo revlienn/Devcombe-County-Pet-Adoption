@@ -1,5 +1,5 @@
 @if(member();as member){
-   
+
 <div class="flex gap-5">
    <!-- left side -->
    <div class="card bg-base-100 flex flex-col gap-5 w-1/4 h-[80vh] border-2 border-blue-300">
@@ -42,7 +42,13 @@
 
    <!-- right side -->
    <div class="card bg-base-100 p-3 w-3/4 border-2 border-blue-600">
-      <h3 class="card-title text-3xl">{{title()}}</h3>
+      <div class="flex justify-between items-center">
+         <h3 class="card-title text-3xl">{{title()}}</h3>
+         @if(isCurrentUser()){
+         <button class="btn btn-outline btn-primary">Edit</button>
+         }
+      </div>
+
       <div class="divider"></div>
       <div>
          <router-outlet></router-outlet>
@@ -51,5 +57,5 @@
 </div>
 
 }@else{
-   No member found. <span routerLink="/">Go home</span>
+No member found. <span routerLink="/">Go home</span>
 }
