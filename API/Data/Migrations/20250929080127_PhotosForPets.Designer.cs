@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250929080127_PhotosForPets")]
+    partial class PhotosForPets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.9");
@@ -152,6 +155,7 @@ namespace API.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("MemberId")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PetId")
@@ -211,15 +215,15 @@ namespace API.Data.Migrations
                 {
                     b.HasOne("API.Entities.Member", "Member")
                         .WithMany("Photos")
-                        .HasForeignKey("MemberId");
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("API.Entities.Pet", "Pet")
+                    b.HasOne("API.Entities.Pet", null)
                         .WithMany("Photos")
                         .HasForeignKey("PetId");
 
                     b.Navigation("Member");
-
-                    b.Navigation("Pet");
                 });
 
             modelBuilder.Entity("API.Entities.VisitForm", b =>
